@@ -1,5 +1,5 @@
 import os
-import django_heroku
+
 """
 Django settings for weatherapi project.
 
@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jki+$aawp#j#-&_g!f1bz_!s5@@zlssnlgfm67fob4@o+$@ock'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['weathertomail.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -78,8 +78,13 @@ WSGI_APPLICATION = 'weatherapi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        #'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '3Dgx9e4pR6nRkjr9ly53',
+        'HOST': 'containers-us-west-101.railway.app',
+        'PORT': '5897',
     }
 }
 
@@ -102,12 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'monishpalisetti@gmail.com'
-EMAIL_HOST_PASSWORD = 'teamexaliber'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -135,4 +135,3 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-django_heroku.settings(locals())

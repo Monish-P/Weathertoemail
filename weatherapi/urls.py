@@ -18,6 +18,7 @@ from django.urls import path
 from core import views as cviews
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',cviews.home,name="home"),
-    path('userdetails',cviews.index,name="userdetails")
+    path('',cviews.index,name="index"),
+    path('home',cviews.home,name="home"),
+    path('userdetails',cviews.details,name="userdetails")
 ]
